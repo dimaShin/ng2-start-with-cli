@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+	margin: 0;
+	position: relative;
+}
+
+.loadmask {
+	background-color: rgba(255,255,255,.8);
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+.loadmask.loadmask-fullscreen {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+
+.loadmask > * {
+	position: relative;
+	top: 50%;
+	left: 50%;
+}
