@@ -16,7 +16,7 @@ export class NotyComponent implements OnDestroy {
 
 	constructor(private noty: Noty) {
 		this.subscription = noty.message$.subscribe((props: NotyProps) => {
-			this.messages.push(props);
+			this.messages.unshift(props);
 		});
 	}
 

@@ -1,3 +1,5 @@
+type NotyStyles = 'success' | 'info' | 'warning' | 'error'
+
 export interface NotyProps {
 	title: string;
 	message: string;
@@ -6,4 +8,6 @@ export interface NotyProps {
 	closable?: boolean;
 	onConfirm?: void;
 	onCancel?: void;
+	style?: NotyStyles;
+	autoClose?: boolean;
 }

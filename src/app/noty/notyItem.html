@@ -1,4 +1,4 @@
-<div class="noty-item-container">
+<div class="noty-item-container {{props.animation}} {{props.style}} {{visible ? 'visible' : ''}}">
 	<div class="noty-item-header">
 		<span class="noty-item-title">{{ props.title }}</span>
 		<span class="noty-item-close-icon" (click)="onCancel()">

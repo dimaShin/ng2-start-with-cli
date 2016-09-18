@@ -40,7 +40,8 @@ export class AppComponent {
 		this.noty.show({
 			title: 'Title!',
 			message: 'Works!',
-			duration: 2000
+			duration: 2000,
+			autoClose: true,
 		});
 	}
 }

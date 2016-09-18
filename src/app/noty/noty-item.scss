@@ -1,0 +1,29 @@
+@keyframes SlideAnimation {
+	0% {
+		margin-left: 100px;
+		opacity: 0;
+	}
+	100% {
+		margin-left: 0px;
+		opacity: 1;
+	}
+}
+
+.slide {
+	animation: SlideAnimation 400ms;
+}
+
+
+.noty-item-container {
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px;
+	border-width: 2px;
+	border-style: solid;
+	box-shadow: 1px 1px 1px 1px rgba(150, 150, 150, .5);
+}
+
+.success {
+	background-color: rgba(0, 255, 0, 0.8);
+	border-color: #0f0;
+}

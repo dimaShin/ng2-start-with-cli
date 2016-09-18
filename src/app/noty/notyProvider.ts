@@ -13,7 +13,9 @@ export class Noty {
 		message: 'Message',
 		duration: 200,
 		animation: 'slide',
-		closable: true
+		closable: true,
+		style: "success",
+		autoClose: true
 	};
 
 	show(props: NotyProps) {
