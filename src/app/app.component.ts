@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Noty } from './noty/notyProvider';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,11 @@ import { Component } from '@angular/core';
 								<app-list (select)="onItemSelected($event)"></app-list>
 								<app-form [item]="selected"></app-form>
 							</div>
+<div>
+<app-noty></app-noty>
+<button (click)="showNoty()" type="button">Show Noty</button>
+							
+</div>
 						`,
   styleUrls: ['app.component.scss']
 })
@@ -18,7 +24,7 @@ export class AppComponent {
 		name: string
 	};
 
-	constructor() {
+	constructor(public noty: Noty) {
 		this.title = 'Title';
 		this.selected = {
 			name: ''
@@ -28,5 +34,13 @@ export class AppComponent {
 	onItemSelected($event: any) {
 		const hero:string = $event.value;
 		this.selected = { name: hero };
+	}
+
+	showNoty() {
+		this.noty.show({
+			title: 'Title!',
+			message: 'Works!',
+			duration: 2000
+		});
 	}
 }

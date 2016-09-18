@@ -1,0 +1,15 @@
+<div class="noty-item-container">
+	<div class="noty-item-header">
+		<span class="noty-item-title">{{ props.title }}</span>
+		<span class="noty-item-close-icon" (click)="onCancel()">
+			<i class="fa fa-times"></i>
+		</span>
+	</div>
+	<div class="noty-item-body">
+		<span class="noty-item-message">{{ props.message }}</span>
+	</div>
+	<div class="noty-item-footer">
+		<button type="button" (click)="onCancel()">Cancel</button>
+		<button type="button" (click)="onConfirm()">Confirm</button>
+	</div>
+</div>
