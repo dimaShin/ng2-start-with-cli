@@ -14,8 +14,18 @@ export class NotyComponent implements OnDestroy {
 	messages: Array<NotyProps> = [];
 	subscription: Subscription;
 
+	private defaultOptions: NotyProps = {
+		message: 'Message',
+		duration: 200,
+		animation: 'slide',
+		closable: true,
+		style: "info",
+		autoClose: true
+	};
+
 	constructor(private noty: Noty) {
 		this.subscription = noty.message$.subscribe((props: NotyProps) => {
+			props = Object.assign({}, this.defaultOptions, props);
 			this.messages.unshift(props);
 		});
 	}

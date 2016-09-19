@@ -1,7 +1,12 @@
-type NotyStyles = 'success' | 'info' | 'warning' | 'error'
+type NotyStyles = 'success' | 'info' | 'warning' | 'error';
+type NotyPosition = 'top'
+	| 'button'
+	| 'left-top'
+	| 'right-top'
+	| 'left-bottom'
+	| 'right-bottom'
 
 export interface NotyProps {
-	title: string;
 	message: string;
 	duration?: number;
 	animation?: string;
@@ -10,4 +15,6 @@ export interface NotyProps {
 	onCancel?: void;
 	style?: NotyStyles;
 	autoClose?: boolean;
+	position?: NotyPosition;
+	showButtons?: boolean;
 }

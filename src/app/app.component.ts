@@ -5,10 +5,6 @@ import { Noty } from './noty/notyProvider';
   selector: 'app-root',
   template: `
 							<h1>{{title}}</h1>
-							<div class="row">
-								<app-list (select)="onItemSelected($event)"></app-list>
-								<app-form [item]="selected"></app-form>
-							</div>
 <div>
 <app-noty></app-noty>
 <button (click)="showNoty()" type="button">Show Noty</button>
@@ -38,10 +34,10 @@ export class AppComponent {
 
 	showNoty() {
 		this.noty.show({
-			title: 'Title!',
-			message: 'Works!',
+			message: 'Error',
 			duration: 2000,
-			autoClose: true,
+			autoClose: false,
+			style: "error"
 		});
 	}
 }

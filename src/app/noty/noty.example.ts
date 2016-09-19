@@ -12,6 +12,6 @@ export class NotyExampleComponent {
 	constructor(private noty: Noty) { }
 
 	onButtonClicked() {
-		this.noty.show({ title: 'EXAMPLE!', message: 'example' });
+		this.noty.show({ message: 'Example' });
 	}
 }

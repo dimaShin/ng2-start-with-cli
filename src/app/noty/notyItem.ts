@@ -16,6 +16,9 @@ export class NotyItemComponent implements OnInit {
 	@Input() props: NotyProps;
 
 	ngOnInit() {
+		if (this.props.onConfirm || this.props.onCancel) {
+			this.props.showButtons = true;
+		}
 		this.visible = true;
 		if (!this.props.autoClose) {
 			return;
