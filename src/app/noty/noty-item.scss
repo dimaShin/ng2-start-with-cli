@@ -31,11 +31,20 @@
 
 
 .noty-item-container {
+	cursor: pointer;
 	position: relative;
 	padding: 10px;
 	margin: 10px;
 	border-radius: 10px;
 	box-shadow: 1px 1px 1px 1px rgba(150, 150, 150, .5);
+}
+
+.noty-item-container .opacity {
+	opacity: 0.5;
+}
+
+.noty-item-container:hover .opacity {
+	opacity: 1;
 }
 
 .noty-success {
@@ -63,10 +72,4 @@
 	right: 0;
 	padding: 10px;
 	cursor: pointer;
-	.fa {
-		opacity: .5;
-	}
-	.fa:hover {
-		opacity: 1;
-	}
 }

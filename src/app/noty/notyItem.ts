@@ -28,12 +28,14 @@ export class NotyItemComponent implements OnInit {
 		}, this.props.duration);
 	}
 
-	onConfirm() {
+	onConfirm($event) {
 		this.onItemClose.emit(this.props);
 		clearTimeout(this.timeout);
 	}
 
-	onCancel() {
+	onCancel($event) {
+		$event.preventDefault();
+		$event.stopPropagation();
 		this.onItemClose.emit(this.props);
 		clearTimeout(this.timeout);
 	}

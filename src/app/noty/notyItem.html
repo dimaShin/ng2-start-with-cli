@@ -1,6 +1,8 @@
-<div class="noty-item-container {{props.animation}} noty-{{props.style}} {{visible ? 'visible' : ''}}">
+<div class="noty-item-container {{props.animation}} noty-{{props.style}} {{visible ? 'visible' : ''}}"
+		 (click)="onCancel($event)"
+>
 	<span class="noty-item-close-icon" (click)="onCancel()">
-		<i class="fa fa-times"></i>
+		<i class="fa fa-times opacity"></i>
 	</span>
 	<div class="noty-item-body">
 		<span class="noty-body-icon">
