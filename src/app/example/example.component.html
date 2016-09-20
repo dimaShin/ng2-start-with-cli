@@ -1,0 +1,115 @@
+<div class="container">
+	<form (ngSubmit)="onSubmit()">
+
+		<div class="col-md-6 col-xs-12">
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2">Message:</label>
+				<input type="text"
+							 class="form-control col-xs-12 col-sm-10"
+							 [(ngModel)]="config.message"
+							 name="message"
+							 required
+				>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-xs-12">
+			<div class="form-group">
+				<label class="col-xs-12">Duration (ms):</label>
+				<input
+					type="number"
+					class="form-control col-xs-12 col-sm-10"
+					name="duration"
+					[(ngModel)]="config.duration"
+				>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-xs-12">
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2">Animation:</label>
+				<select
+					class="form-control"
+					name="animation"
+					[(ngModel)]="config.animation"
+				>
+					<option *ngFor="let anim of animations" [value]="anim">
+						{{ anim | capitalize }}
+					</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-xs-12">
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2">Type:</label>
+				<select
+					class="form-control"
+					name="type"
+					[(ngModel)]="config.style"
+				>
+					<option *ngFor="let style of notyStyles" [value]="style">
+						{{ style | capitalize }}
+					</option>
+				</select>
+			</div>
+		</div>
+
+
+		<div class="col-md-6 col-xs-12">
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-2">Position:</label>
+				<select
+					class="form-control"
+					name="position"
+					[(ngModel)]="config.position"
+				>
+					<option *ngFor="let pos of notyPositions" [value]="pos">
+						{{ pos | capitalize }}
+					</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="col-md-6 hidden-sm"></div>
+
+		<div class="checkbox col-xs-12">
+			<label>
+				<input
+					type="checkbox"
+					name="closable"
+					[(ngModel)]="config.closable"
+				>
+				closable
+			</label>
+		</div>
+
+		<div class="checkbox col-xs-12">
+			<label>
+				<input
+					type="checkbox"
+					name="autoClose"
+					[(ngModel)]="config.autoClose"
+				>
+				auto close
+			</label>
+		</div>
+
+		<div class="checkbox col-xs-12">
+			<label>
+				<input
+					type="checkbox"
+					name="confirm"
+					[(ngModel)]="config.confirm"
+				>
+				confirmation
+			</label>
+		</div>
+
+		<div class="col-xs-12">
+			<button type="submit" class="btn btn-primary pull-right">Show Example</button>
+		</div>
+
+	</form>
+</div>
+

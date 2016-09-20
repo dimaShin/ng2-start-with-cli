@@ -20,7 +20,8 @@ export class NotyComponent implements OnDestroy {
 		animation: 'slide',
 		closable: true,
 		style: "info",
-		autoClose: true
+		autoClose: true,
+		exampleMode: false
 	};
 
 	constructor(private noty: Noty) {

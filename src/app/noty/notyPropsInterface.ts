@@ -1,6 +1,6 @@
 type NotyStyles = 'success' | 'info' | 'warning' | 'error';
 type NotyPosition = 'top'
-	| 'button'
+	| 'bottom'
 	| 'left-top'
 	| 'right-top'
 	| 'left-bottom'
@@ -16,5 +16,6 @@ export interface NotyProps {
 	style?: NotyStyles;
 	autoClose?: boolean;
 	position?: NotyPosition;
-	showButtons?: boolean;
+	confirm?: boolean;
+	exampleMode?: boolean;
 }

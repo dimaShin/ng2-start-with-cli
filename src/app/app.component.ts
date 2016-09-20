@@ -4,10 +4,9 @@ import { Noty } from './noty/notyProvider';
 @Component({
   selector: 'app-root',
   template: `
-							<h1>{{title}}</h1>
+							<noty-example></noty-example>
 <div>
 <app-noty></app-noty>
-<button (click)="showNoty()" type="button">Show Noty</button>
 							
 </div>
 						`,
@@ -25,19 +24,5 @@ export class AppComponent {
 		this.selected = {
 			name: ''
 		}
-	}
-
-	onItemSelected($event: any) {
-		const hero:string = $event.value;
-		this.selected = { name: hero };
-	}
-
-	showNoty() {
-		this.noty.show({
-			message: 'Error',
-			duration: 2000,
-			autoClose: false,
-			style: "error"
-		});
 	}
 }
