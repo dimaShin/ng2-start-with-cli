@@ -1,13 +1,15 @@
 <div
 	class="noty-item-container {{props.animation}} noty-{{props.style}}"
+	(mouseover)="onMouseOverContainer()"
+	(mouseleave)="onMouseLeaveContainer()"
 	(click)="onCancel($event)"
 >
 	<div class="noty-background opacity noty-{{props.style}}"></div>
 	<span class="noty-icons-wrp {{hoveredConfirm ? 'hovered-confirm' : ''}}">
 		<i
 			class="fa fa-check-circle opacity fa-lg confirm-icon"
-			(mouseover)="onMouseOver($event)"
-			(mouseleave)="onMouseLeave()"
+			(mouseover)="onMouseOverConfirm($event)"
+			(mouseleave)="onMouseLeaveConfirm()"
 			(click)="onConfirm($event)"
 			*ngIf="props.confirm"
 		></i>
@@ -24,4 +26,9 @@
 			<span class="noty-item-message">{{ props.message }}</span>
 		</div>
 	</div>
+	<div
+		class="noty-progress-bar"
+		[style.width]="progress.width"
+		[style.transitionDuration]="progress.duration"
+	></div>
 </div>

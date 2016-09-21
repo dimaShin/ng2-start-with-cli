@@ -28,11 +28,52 @@ export class ExampleComponent implements Injectable{
 		closable: true,
 		autoClose: false,
 		confirm: false,
-		exampleMode: true
+		exampleMode: true,
+		onConfirm: this.onConfirm
 	};
+
+	onConfirm() {
+		alert('Confirm clicked');
+	}
 
 	onSubmit() {
 		this.noty.show(this.config);
+	}
+
+	onSuccess() {
+		this.noty.show({
+			message: 'Success!',
+			duration: 1000,
+			style: 'success',
+			autoClose: true
+		});
+	}
+
+	onWarning() {
+		this.noty.show({
+			message: 'Warning!',
+			duration: 1000,
+			style: 'warning',
+			autoClose: true
+		});
+	}
+
+	onError() {
+		this.noty.show({
+			message: 'Error!',
+			duration: 1000,
+			style: 'error',
+			autoClose: true
+		});
+	}
+
+	onInfo() {
+		this.noty.show({
+			message: 'Info!',
+			duration: 1000,
+			style: 'info',
+			autoClose: true
+		});
 	}
 
 	constructor(public noty: Noty) {}

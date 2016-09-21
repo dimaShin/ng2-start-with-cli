@@ -56,36 +56,43 @@
 
 .noty-item-container.noty-success {
 	color: #4F8A10;
+	.noty-background  {
+		background-color: #DFF2BF;
+	}
+	.noty-progress-bar {
+		background-color: darken(#DFF2BF, 50%);
+	}
 }
 
 .noty-item-container.noty-info {
 	color: #00529B;
+	.noty-background, .noty-progress-bar  {
+		background-color: #BDE5F8;
+	}
 }
 
 .noty-item-container.noty-warning {
 	color: #9F6000;
+	.noty-background, .noty-progress-bar  {
+		background-color: #FEEFB3;
+	}
 }
 .noty-item-container.noty-error {
 	color: #D8000C;
+	.noty-background, .noty-progress-bar  {
+		background-color: #FFBABA;
+	}
 }
 
-.noty-background.noty-success {
-	color: #4F8A10;
-	background-color: #DFF2BF;
-}
-
-.noty-background.noty-info {
-	color: #00529B;
-	background-color: #BDE5F8;
-}
-
-.noty-background.noty-warning {
-	color: #9F6000;
-	background-color: #FEEFB3;
-}
-.noty-background.noty-error {
-	color: #D8000C;
-	background-color: #FFBABA;
+.noty-progress-bar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	z-index: 399;
+	transition-property: width;
+	transition-timing-function: linear;
 }
 
 .noty-icons-wrp {

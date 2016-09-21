@@ -69,12 +69,12 @@ export class NotyComponent implements OnDestroy {
 
 	private defaultOptions: NotyProps = {
 		message: 'Message',
-		duration: 200,
+		duration: 1000,
 		animation: 'slide',
 		closable: true,
 		style: "info",
 		autoClose: true,
-		exampleMode: false
+		progressbar: true
 	};
 
 	constructor(private noty: Noty) {

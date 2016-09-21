@@ -102,6 +102,16 @@
 					confirmation
 				</label>
 			</div>
+			<div class="checkbox">
+				<label>
+					<input
+						type="checkbox"
+						name="progressbar"
+						[(ngModel)]="config.progressbar"
+					>
+					show progressbar
+				</label>
+			</div>
 		</div>
 		<div class="col-xs-8 config-wrp">
 
@@ -115,14 +125,15 @@
   autoClose: {{config.autoClose}},<br/>
   position: {{config.position}},<br/>
   confirm: {{config.confirm}},<br/>
+  progressbar: {{config.progressbar}},<br/>
 &#125;
 			</pre>
 		</div>
 		<div class="col-xs-12">
-			<button type="button" class="btn btn-info pull-right">Show Info</button>
-			<button type="button" class="btn btn-success pull-right">Show Success</button>
-			<button type="button" class="btn btn-warning pull-right">Show Warning</button>
-			<button type="button" class="btn btn-danger pull-right">Show Error</button>
+			<button type="button" class="btn btn-info pull-right" (click)="onInfo()">Show Info</button>
+			<button type="button" class="btn btn-success pull-right" (click)="onSuccess()">Show Success</button>
+			<button type="button" class="btn btn-warning pull-right" (click)="onWarning()">Show Warning</button>
+			<button type="button" class="btn btn-danger pull-right" (click)="onError()">Show Error</button>
 			<button type="submit" class="btn btn-primary pull-right">Show Custom Example</button>
 		</div>
 	</form>

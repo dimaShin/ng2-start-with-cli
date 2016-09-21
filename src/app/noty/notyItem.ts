@@ -19,7 +19,11 @@ import { NotyProps } from './notyPropsInterface';
 export class NotyItemComponent implements OnInit, OnDestroy {
 	timeout: any;
 	hoveredConfirm: boolean = false;
-	region: string = '';
+	autoCloseOn: boolean = false;
+	progress = {
+		width: '0',
+		duration: '0'
+	};
 
 	@Output() onItemClose: EventEmitter<NotyProps> = new EventEmitter();
 	@Input() props: NotyProps;
@@ -30,40 +34,47 @@ export class NotyItemComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 
-		switch (this.props.position) {
-			case 'left-top' || 'left-bottom': {
-				this.region = 'left';
-				break;
-			}
-			case 'right-top' || 'right-bottom': {
-				this.region = 'right';
-				break;
-			}
-			case 'top': {
-				this.region = 'top';
-				break;
-			}
-			case 'bottom': {
-				this.region = 'bottom';
-				break;
-			}
-			default: {
-				this.props.position = 'right-top';
-				this.region = 'right';
-			}
-		}
-
-		if (this.props.confirm && !this.props.exampleMode) {
+		if (this.props.confirm) {
 			if (!this.props.onConfirm || typeof this.props.onConfirm !== 'function') {
 				throw 'Noty with prop "confirm" set to true requires onConfirm callback';
 			}
 		}
-		if (!this.props.autoClose) {
+		this.handleAutoClose();
+	}
+
+	handleAutoClose() {
+		if (!this.props.autoClose || this.props.confirm) {
 			return;
 		}
+
+		this.autoCloseOn = true;
+
+		if (this.props.progressbar) {
+			this.startProgressBar();
+		}
+
 		this.timeout = setTimeout(() => {
 			this.close();
 		}, this.props.duration);
+	}
+
+	startProgressBar() {
+		if (this.autoCloseOn && this.props.progressbar) {
+			setTimeout(() => {
+				this.progress.width = '100%';
+				this.progress.duration = `${this.props.duration}ms`;
+			}, 0);
+
+		}
+	}
+
+	stopProgressBar() {
+		if (this.autoCloseOn && this.props.progressbar) {
+			setTimeout(() => {
+				this.progress.width = '0';
+				this.progress.duration = '50ms';
+			}, 0);
+		}
 	}
 
 	close() {
@@ -87,14 +98,32 @@ export class NotyItemComponent implements OnInit, OnDestroy {
 		clearTimeout(this.timeout);
 	}
 
-	onMouseOver($event) {
+	onMouseOverConfirm($event) {
 		$event.preventDefault();
 		$event.stopPropagation();
 		$event.stopImmediatePropagation();
 		this.hoveredConfirm = true;
 	}
 
-	onMouseLeave() {
+	onMouseLeaveConfirm() {
 		this.hoveredConfirm = false;
+	}
+
+	onMouseOverContainer() {
+		if (!this.props.autoClose) {
+			return;
+		}
+		clearTimeout(this.timeout);
+		this.stopProgressBar();
+	}
+
+	onMouseLeaveContainer() {
+		if (!this.props.autoClose) {
+			return;
+		}
+		this.timeout = setTimeout(() => {
+			this.close();
+		}, this.props.duration);
+		this.startProgressBar();
 	}
 }

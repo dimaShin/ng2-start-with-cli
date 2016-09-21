@@ -11,10 +11,11 @@ export interface NotyProps {
 	duration?: number;
 	animation?: string;
 	closable?: boolean;
-	onConfirm?: void;
+	onConfirm?: () => void;
 	style?: NotyStyles;
 	autoClose?: boolean;
 	position?: NotyPosition;
 	confirm?: boolean;
 	exampleMode?: boolean;
+	progressbar?: boolean;
 }
