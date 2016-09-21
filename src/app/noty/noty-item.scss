@@ -60,27 +60,36 @@
 		background-color: #DFF2BF;
 	}
 	.noty-progress-bar {
-		background-color: darken(#DFF2BF, 50%);
+		background-color: darken(#DFF2BF, 40%);
 	}
 }
 
 .noty-item-container.noty-info {
 	color: #00529B;
-	.noty-background, .noty-progress-bar  {
+	.noty-background  {
 		background-color: #BDE5F8;
+	}
+	.noty-progress-bar {
+		background-color: darken(#BDE5F8, 30%);
 	}
 }
 
 .noty-item-container.noty-warning {
 	color: #9F6000;
-	.noty-background, .noty-progress-bar  {
+	.noty-background  {
 		background-color: #FEEFB3;
+	}
+	.noty-progress-bar {
+		background-color: darken(#FEEFB3, 40%);
 	}
 }
 .noty-item-container.noty-error {
 	color: #D8000C;
-	.noty-background, .noty-progress-bar  {
+	.noty-background  {
 		background-color: #FFBABA;
+	}
+	.noty-progress-bar {
+		background-color: darken(#FFBABA, 20%);
 	}
 }
 

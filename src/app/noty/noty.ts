@@ -27,29 +27,29 @@ interface MessagesCollection {
 	animations: [
 		trigger('leftRegion', [
 			state('in', style({transform: 'translateX(0)'})),
-			transition('void => *', [
-				style({transform: 'translateX(-100%)'}),
+			state('void', style({transform: 'translateX(-100%)'})),
+			transition('void <=> *', [
 				animate('300ms cubic-bezier(0.68, -0.55, 0.265, 1.55)')
 			])
 		]),
 		trigger('rightRegion', [
 			state('in', style({transform: 'translateX(0)'})),
-			transition('void => *', [
-				style({transform: 'translateX(100%)'}),
+			state('void', style({transform: 'translateX(100%)'})),
+			transition('void <=> *', [
 				animate('300ms cubic-bezier(0.68, -0.55, 0.265, 1.55)')
 			])
 		]),
 		trigger('topRegion', [
 			state('in', style({transform: 'translateY(0)'})),
-			transition('void => *', [
-				style({transform: 'translateY(-100%)'}),
+			state('void', style({transform: 'translateY(-100%)'})),
+			transition('void <=> *', [
 				animate('300ms cubic-bezier(0.68, -0.55, 0.265, 1.55)')
 			])
 		]),
 		trigger('bottomRegion', [
 			state('in', style({transform: 'translateY(0)'})),
-			transition('void => *', [
-				style({transform: 'translateY(100%)'}),
+			state('void', style({transform: 'translateY(100%)'})),
+			transition('void <=> *', [
 				animate('300ms cubic-bezier(0.68, -0.55, 0.265, 1.55)')
 			])
 		])
