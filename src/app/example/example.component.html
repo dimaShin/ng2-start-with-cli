@@ -1,7 +1,7 @@
-<div class="container">
-	<form (ngSubmit)="onSubmit()">
+<div class="container example-container">
+	<form (ngSubmit)="onSubmit()" class="form-horizontal">
 
-		<div class="col-md-6 col-xs-12">
+		<div class="col-xs-12">
 			<div class="form-group">
 				<label class="col-xs-12 col-sm-2">Message:</label>
 				<input type="text"
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-6 col-xs-12">
+		<div class="col-xs-12">
 			<div class="form-group">
 				<label class="col-xs-12">Duration (ms):</label>
 				<input
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-6 col-xs-12">
+		<div class="col-xs-12">
 			<div class="form-group">
 				<label class="col-xs-12 col-sm-2">Animation:</label>
 				<select
@@ -40,7 +40,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-6 col-xs-12">
+		<div class="col-xs-12">
 			<div class="form-group">
 				<label class="col-xs-12 col-sm-2">Type:</label>
 				<select
@@ -56,7 +56,7 @@
 		</div>
 
 
-		<div class="col-md-6 col-xs-12">
+		<div class="col-xs-12">
 			<div class="form-group">
 				<label class="col-xs-12 col-sm-2">Position:</label>
 				<select
@@ -71,45 +71,60 @@
 			</div>
 		</div>
 
-		<div class="col-md-6 hidden-sm"></div>
-
-		<div class="checkbox col-xs-12">
-			<label>
-				<input
-					type="checkbox"
-					name="closable"
-					[(ngModel)]="config.closable"
-				>
-				closable
-			</label>
-		</div>
-
-		<div class="checkbox col-xs-12">
-			<label>
-				<input
-					type="checkbox"
-					name="autoClose"
-					[(ngModel)]="config.autoClose"
-				>
-				auto close
-			</label>
-		</div>
-
-		<div class="checkbox col-xs-12">
-			<label>
-				<input
-					type="checkbox"
-					name="confirm"
-					[(ngModel)]="config.confirm"
-				>
-				confirmation
-			</label>
-		</div>
-
 		<div class="col-xs-12">
-			<button type="submit" class="btn btn-primary pull-right">Show Example</button>
+			<div class="checkbox">
+				<label>
+					<input
+						type="checkbox"
+						name="closable"
+						[(ngModel)]="config.closable"
+					>
+					closable
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input
+						type="checkbox"
+						name="autoClose"
+						[(ngModel)]="config.autoClose"
+					>
+					auto close
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input
+						type="checkbox"
+						name="confirm"
+						[(ngModel)]="config.confirm"
+					>
+					confirmation
+				</label>
+			</div>
 		</div>
+		<div class="col-xs-8 config-wrp">
 
+			<pre>
+&#123;
+  message: '{{config.message}}',<br/>
+  duration: {{config.duration}},<br/>
+  animation: '{{config.animation}}',<br/>
+  closable: {{config.closable}},<br/>
+  style: '{{config.style}}',<br/>
+  autoClose: {{config.autoClose}},<br/>
+  position: {{config.position}},<br/>
+  confirm: {{config.confirm}},<br/>
+&#125;
+			</pre>
+		</div>
+		<div class="col-xs-12">
+			<button type="button" class="btn btn-info pull-right">Show Info</button>
+			<button type="button" class="btn btn-success pull-right">Show Success</button>
+			<button type="button" class="btn btn-warning pull-right">Show Warning</button>
+			<button type="button" class="btn btn-danger pull-right">Show Error</button>
+			<button type="submit" class="btn btn-primary pull-right">Show Custom Example</button>
+		</div>
 	</form>
 </div>
 

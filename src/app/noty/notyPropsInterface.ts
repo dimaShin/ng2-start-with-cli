@@ -12,7 +12,6 @@ export interface NotyProps {
 	animation?: string;
 	closable?: boolean;
 	onConfirm?: void;
-	onCancel?: void;
 	style?: NotyStyles;
 	autoClose?: boolean;
 	position?: NotyPosition;

@@ -20,14 +20,15 @@ export class ExampleComponent implements Injectable{
 	];
 	animations = ['slide'];
 	config: NotyProps = {
-		message: '',
+		message: 'This is Message!',
 		duration: 1000,
 		animation: 'slide',
 		style: 'success',
 		position: 'right-top',
 		closable: true,
-		autoClose: true,
-		confirm: false
+		autoClose: false,
+		confirm: false,
+		exampleMode: true
 	};
 
 	onSubmit() {

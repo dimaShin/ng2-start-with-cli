@@ -1,8 +1,17 @@
-<div class="noty-item-container {{props.animation}} noty-{{props.style}} {{visible ? 'visible' : ''}}"
-		 (click)="onCancel($event)"
+<div
+	class="noty-item-container {{props.animation}} noty-{{props.style}}"
+	(click)="onCancel($event)"
 >
-	<span class="noty-item-close-icon" (click)="onCancel()">
-		<i class="fa fa-times opacity"></i>
+	<div class="noty-background opacity noty-{{props.style}}"></div>
+	<span class="noty-icons-wrp {{hoveredConfirm ? 'hovered-confirm' : ''}}">
+		<i
+			class="fa fa-check-circle opacity fa-lg confirm-icon"
+			(mouseover)="onMouseOver($event)"
+			(mouseleave)="onMouseLeave()"
+			(click)="onConfirm($event)"
+			*ngIf="props.confirm"
+		></i>
+		<i class="fa fa-times-circle opacity fa-lg close-icon"></i>
 	</span>
 	<div class="noty-item-body">
 		<span class="noty-body-icon">
@@ -14,9 +23,5 @@
 		<div class="not-item-content">
 			<span class="noty-item-message">{{ props.message }}</span>
 		</div>
-	</div>
-	<div *ngIf="props.showButtons" class="noty-item-footer">
-		<button type="button" (click)="onCancel($event)">Cancel</button>
-		<button type="button" (click)="onConfirm($event)">Confirm</button>
 	</div>
 </div>

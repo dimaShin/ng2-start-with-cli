@@ -1,17 +1,70 @@
-import { Component, OnDestroy } from '@angular/core';
+import {
+	Component,
+	OnDestroy,
+	trigger,
+	state,
+	style,
+	transition,
+	animate
+} from '@angular/core';
 import { Noty } from './notyProvider';
 import { NotyProps } from './notyPropsInterface';
 import { Subscription } from 'rxjs/Subscription';
 
+interface MessagesCollection {
+	rt: Array<NotyProps>;
+	rb: Array<NotyProps>;
+	t: Array<NotyProps>;
+	lt: Array<NotyProps>;
+	lb: Array<NotyProps>;
+	b: Array<NotyProps>;
+}
 
 @Component({
 	selector: 'app-noty',
 	templateUrl: './noty.html',
-	styleUrls: ['noty.scss']
+	styleUrls: ['noty.scss'],
+	animations: [
+		trigger('leftRegion', [
+			state('in', style({transform: 'translateX(0)'})),
+			transition('void => *', [
+				style({transform: 'translateX(-100%)'}),
+				animate('300ms cubic-bezier(0.68, -0.55, 0.265, 1.55)')
+			])
+		]),
+		trigger('rightRegion', [
+			state('in', style({transform: 'translateX(0)'})),
+			transition('void => *', [
+				style({transform: 'translateX(100%)'}),
+				animate('300ms cubic-bezier(0.68, -0.55, 0.265, 1.55)')
+			])
+		]),
+		trigger('topRegion', [
+			state('in', style({transform: 'translateY(0)'})),
+			transition('void => *', [
+				style({transform: 'translateY(-100%)'}),
+				animate('300ms cubic-bezier(0.68, -0.55, 0.265, 1.55)')
+			])
+		]),
+		trigger('bottomRegion', [
+			state('in', style({transform: 'translateY(0)'})),
+			transition('void => *', [
+				style({transform: 'translateY(100%)'}),
+				animate('300ms cubic-bezier(0.68, -0.55, 0.265, 1.55)')
+			])
+		])
+	]
 })
 
 export class NotyComponent implements OnDestroy {
-	messages: Array<NotyProps> = [];
+	messages: MessagesCollection = {
+		b: [],
+		t: [],
+		rt: [],
+		rb: [],
+		lt: [],
+		lb: []
+	};
 	subscription: Subscription;
 
 	private defaultOptions: NotyProps = {
@@ -27,13 +80,29 @@ export class NotyComponent implements OnDestroy {
 	constructor(private noty: Noty) {
 		this.subscription = noty.message$.subscribe((props: NotyProps) => {
 			props = Object.assign({}, this.defaultOptions, props);
-			this.messages.unshift(props);
+			let region = this.getNotyRegion(props.position);
+
+			this.messages[region].unshift(props);
 		});
 	}
 
 	onItemClose(props) {
-		var idx = this.messages.indexOf(props);
-		this.messages.splice(idx, 1);
+		let region = this.getNotyRegion(props.position);
+		let idx = this.messages[region].indexOf(props);
+
+		idx !== -1 && this.messages[region].splice(idx, 1);
+	}
+
+	getNotyRegion(position) {
+		switch (position) {
+			case 'left-top': return 'lt';
+			case 'left-bottom': return 'lb';
+			case 'right-top': return 'rt';
+			case 'right-bottom': return 'rb';
+			case 'top': return 't';
+			case 'bottom': return 'b';
+			default: return 'rt';
+		}
 	}
 
 	ngOnDestroy() {
